@@ -7,6 +7,8 @@ class Flower {
  float x;       // x-position of the center of the flower
  float y;       // y-position of the center of the flower
  int petalColor;//hexadecimal number for the color of petals
+ float xSpeed = 10;
+ float ySpeed = 10;
  
 Flower(float temp_r, int temp_n_petals, float temp_x, float temp_y, int temp_petalColor) {
   r=temp_r;
@@ -32,5 +34,16 @@ void display () {
   fill(200,0,0);
   ellipse(x,y,r*1.2,r*1.2);
 }
-
+void move (){
+x+=xSpeed;
+y+=ySpeed;
+}
+void walls(){
+if (x >= width-r || x<=0+r){
+xSpeed *= -1;
+}
+if (y > height-r || y<=0+r){
+ySpeed *= -1;
+}
+}
 }
